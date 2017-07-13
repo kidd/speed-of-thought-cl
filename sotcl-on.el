@@ -1,8 +1,8 @@
-;;; sotcl-on.el --- Auxiliary functions for turning on sotclojure  -*- lexical-binding: t; -*-
+;;; sotcl-on.el --- Auxiliary functions for turning on sotcl  -*- lexical-binding: t; -*-
 
-;; Copyright (C) 2017  Artur Malabarba
+;; Copyright (C) 2017  Raimon Grau
 
-;; Author: Artur Malabarba <artur@biva.com.br>
+;; Author: Raimon Grau <raimonster@gmail.com>
 
 ;; This program is free software; you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published by
