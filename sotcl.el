@@ -262,6 +262,22 @@ With a prefix argument, defines a `defmacro' instead of a `defun'."
                   " " name " (")
           (save-excursion (insert ")\n  \"\"\n  )\n\n")))))))
 
+
+(defun sotcl-find-or-define-variable (&optional prefix)
+  "If symbol under point is a defined variable, go to it, otherwise define it.
+
+With a prefix argument, defines a `defparameter' instead of a `devar'."
+  (interactive "P")
+  (let ((name (sly-symbol-at-point))) ; sly-symbol-at-point
+    (unless (and name (sotlisp--find-in-buffer "(def\\(custom\\|const\\|var\\) " name))
+      (let ((name-s (sly-find-definitions name)))
+        (if name-s
+            (sly-edit-definition name)
+          (sotlisp--beginning-of-defun)
+          (insert "(def" (if prefix "parameter" "var")
+                  " " name " t")
+          (save-excursion (insert ")\n  \"\"\n  )\n\n")))))))
+
 
 ;;; Mode definition
 ;;;###autoload
@@ -271,7 +287,7 @@ With a prefix argument, defines a `defmacro' instead of a `defun'."
     ([C-return] . sotlisp-downlist-newline-and-parentheses)
     (,(kbd "C-M-;") . sotlisp-comment-or-uncomment-sexp)
     ("\C-cf"    . sotcl-find-or-define-function)
-    ("\C-cv"    . sotlisp-find-or-define-variable))
+    ("\C-cv"    . sotcl-find-or-define-variable))
   (if sotcl-mode
       (abbrev-mode 1)
     (kill-local-variable 'abbrev-mode)))
