@@ -252,11 +252,11 @@ If the function under point is already defined this just calls
 
 With a prefix argument, defines a `defmacro' instead of a `defun'."
   (interactive "P")
-  (let ((name (sotlisp--function-at-point)))
+  (let ((name (sly-symbol-at-point))) ; sly-symbol-at-point
     (unless (and name (sotlisp--find-in-buffer "(def\\(un\\|macro\\|alias\\) " name))
-      (let ((name-s (intern-soft name)))
-        (if (fboundp name-s)
-            (find-function name-s)
+      (let ((name-s (sly-find-definitions name)))
+        (if name-s
+            (sly-edit-definition name)
           (sotlisp--beginning-of-defun)
           (insert "(def" (if prefix "macro" "un")
                   " " name " (")
