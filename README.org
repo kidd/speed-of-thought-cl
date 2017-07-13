@@ -1,8 +1,8 @@
 * speed-of-thought-lisp
-Write clojure at the speed of thought.
+Write Common Lisp at the speed of thought.
 
-This defines a new local minor-mode ~sotclojure-mode~, which is
-activated by the global ~speed-of-thought-mode~ on any clojure
+This defines a new local minor-mode ~sotcl-mode~, which is
+activated by the global ~speed-of-thought-mode~ on any Common Lisp
 buffers.
 
 The mode is quite simple, and is composed of two parts:
@@ -52,9 +52,12 @@ electric-pair-mode), if you write:
 
 You get
 
-#+BEGIN_SRC clojure
+#+BEGIN_SRC Common Lisp
 (when-let [{:keys [x]}
            (and (number? y) (first y))])
 #+END_SRC
 
-
+** Author
+   This is a complete ripoff of Arthur Malabarba's speed-of-thought
+   for elisp and clojure done by Raimon Grau. Most credit goes to
+   malabarba. :)
