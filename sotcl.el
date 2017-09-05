@@ -114,7 +114,7 @@ not after a `('."
 
 
 ;;; Abbrev definitions
-(setf sotcl--default-function-abbrevs
+(defvar sotcl--default-function-abbrevs
   '(
     ("a"   . "and ")
     ("ap"   . "apply ")
